@@ -28,7 +28,7 @@ namespace ConsoleApp1
                 _age = age;
             }
 
-            public void DisplayDepartmentInfo()
+            public void DisplayInfo()
             {
                 Console.WriteLine("Имя Фамилия: {0}, Возраст: {1}", _name, _age);
             }
@@ -49,9 +49,9 @@ namespace ConsoleApp1
                 _experience = experience;
             }
 
-            public void DisplayWorkerInfo()
+            public void DisplayInfo()
             {
-                DisplayDepartmentInfo();
+                base.DisplayInfo();
                 Console.WriteLine("Опыт работы: {0} лет", _experience);
             }
         }
@@ -71,9 +71,9 @@ namespace ConsoleApp1
                 _experience = experience;
             }
 
-            public void DisplayAdministrationInfo()
+            public void DisplayInfo()
             {
-                DisplayDepartmentInfo();
+                base.DisplayInfo();
                 Console.WriteLine("Опыт работы администратора: {0} лет", _experience);
             }
         }
@@ -94,30 +94,31 @@ namespace ConsoleApp1
                 _specialization = specialization;
             }
 
-            public void DisplayEngineerInfo()
+            public void DisplayInfo()
             {
-                DisplayWorkerInfo();
+                base.DisplayInfo();
                 Console.WriteLine("Специальность: {0}", _specialization);
             }
         }
+
         static void Main(string[] args)
         {
             Department department = new Department("Иван Иванов", 41);
             Worker worker = new Worker("Матвей Матвеев", 32, 10);
             Administration administration = new Administration("Салим Салимов", 19, 9);
-            Engineer engineer = new Engineer("Егор Егоров", 23, 23, "3 разряд");
+            Engineer engineer = new Engineer("Егор Егоров", 23, 26, "3 разряд");
 
             Console.WriteLine("\n1. Кадры:");
-            department.DisplayDepartmentInfo();
+            department.DisplayInfo();
 
             Console.WriteLine("\n2. Рабочий:");
-            worker.DisplayWorkerInfo();
+            worker.DisplayInfo();
 
             Console.WriteLine("\n3. Администрация:");
-            administration.DisplayAdministrationInfo();
+            administration.DisplayInfo();
 
             Console.WriteLine("\n4. Инженер:");
-            engineer.DisplayEngineerInfo();
+            engineer.DisplayInfo();
         }
     }
 }
